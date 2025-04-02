@@ -85,7 +85,7 @@ done
 for i in `cut -f 3 sampleName_clientId-1.txt`
 do
   mkdir ./5.g.vcf/${i}
-  for j in {1..19} X
+  for j in {1..19}
   do
      gatk  HaplotypeCaller \
      -ERC GVCF \               #不加该选项默认输出单样本vcf文件，适合单样本。GVCF输出突变，非突变以区间呈现，为了合并多个样本。BP_RESOLUTION输出突变和非突变的所有位点。
@@ -100,7 +100,7 @@ done
 
 #8.CombingGVCFs
 #gvcf会记录每一个位点到情况，包括有无突变，vcf只记录突变位点情况
-for i in {1..19} X
+for i in {1..19}
 do
     gatk CombineGVCFs  \
     -R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -114,7 +114,7 @@ done
 
 
 #9.GenotypeGVCFs，-all-sites可以保留所有位点
-for i in {1..19} X
+for i in {1..19}
 do
 	gatk GenotypeGVCFs \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -124,7 +124,7 @@ done
 
 
 #10.SelectVariants,分别选择SNP和INDEL
-for i in {1..19} X
+for i in {1..19}
 do
 	gatk SelectVariants \
 	-V ./6.vcf/genotypevcf.${i}.vcf.gz \
@@ -133,7 +133,7 @@ do
 	-O snp.${i}.vcf.gz
 done
 
-for i in {1..19} X
+for i in {1..19}
 do
 	gatk SelectVariants \
 	-V ./6.vcf/genotypevcf.${i}.vcf.gz \
@@ -147,7 +147,7 @@ done
 -L	chromosome，提取指定染色体
 
 #11.VariantFiltration，分别硬过滤
-for i in {1..19} X
+for i in {1..19}
 do
 	gatk VariantFiltration \
     -V snp.${i}.vcf.gz \
@@ -157,7 +157,7 @@ do
     -O ./train_set/hard.snp.${i}.vcf.gz
 done
 
-for i in {1..19} X
+for i in {1..19}
 do
 	gatk VariantFiltration \
 	-V indel.${i}.vcf.gz \
@@ -168,7 +168,7 @@ done
 
 
 #12.保留过滤后的位点，如果仅仅硬过滤这一步已经是最后一步，如果要软过滤则需要用硬过滤去训练数据集。
-for i in {1..19} X
+for i in {1..19}
 do
 	gatk SelectVariants -V ./train_set/hard.snp.${i}.vcf.gz --exclude-filtered -O ./train_set/hard.pass.snp.${i}.vcf.gz
 	#awk '/^#/||$7=="PASS"' hard.snp.${i}.vcf > hard.pass.snp.${i}.vcf
@@ -179,7 +179,7 @@ done
 #13.VariantRecalibrator,SNP
 #输入文件为第9步得到的genotypevcf
 #训练集为硬过滤vcf文件及dbsnp数据库的数据，需要注意数据集用到的参考基因组版本要对应。
-for i in {1..19} X
+for i in {1..19}
 do
 	gatk VariantRecalibrator \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -195,7 +195,7 @@ do
 done
 
 #Apply recalibration,SNP
-for i in {1..19} X
+for i in {1..19}
 do
 	gatk ApplyVQSR \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -208,7 +208,7 @@ do
 done
 
 #VariantRecalibrator,INDEL，输入文件为上一步得到的vcf文件，gatk可以通过"-mode"选项分别对snp和indel进行VQSR
-for i in {1..19} X
+for i in {1..19}
 do
 	gatk VariantRecalibrator \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -224,7 +224,7 @@ do
 done
 
 #Apply recalibration,INDEL
-for i in {1..19} X
+for i in {1..19}
 do
 	gatk ApplyVQSR \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -254,9 +254,8 @@ gatk GatherVcfs \
  
 #15.remove filter
 #gatk SelectVariants -V ./10.vcf/autosome.raw.vcf --exclude-filtered -O autosome.pass.vcf
-awk '/^#/||$7=="PASS"' ./10.vcf/autosome.raw.vcf > autosome.pass.vcf
 
-mv ./9.final/X.vqsr.vcf ./10.vcf/x.raw.vcf && awk '/^#/||$7=="PASS"' ./10.vcf/x.raw.vcf > x.pass.vcf
+awk '/^#/||$7=="PASS"' ./10.vcf/autosome.raw.vcf > autosome.pass.vcf
 
 gatk SelectVariants \
 	-V autosome.pass.vcf \
@@ -264,8 +263,4 @@ gatk SelectVariants \
 	--restrict-alleles-to BIALLELIC \
 	-O autosome.pass.snp.vcf
 
-gatk SelectVariants \
-	-V x.pass.vcf \
-	-select-type SNP \
-	--restrict-alleles-to BIALLELIC \
-	-O x.pass.snp.vcf
+ 
