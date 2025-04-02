@@ -5,7 +5,7 @@
 ../angsd/misc/realSFS DOM.saf.idx MUS.saf.idx -fold 1 > 2D.sfs
 
 
-#running fastsimcoal2
+#running fastsimcoal2, generate maximum likelihood (ML) parameters and _maxL.par file
 PREFIX=4pop
 for i in {1..100}
  do
@@ -17,7 +17,7 @@ for i in {1..100}
  done
 
 
-#generate 1,000 bootstrap replicates
+#generate 1,000 bootstrap replicates using _maxL.par file
 ../fsc2705 -i ${PREFIX}_maxL.par -n 1000 -j -m -s0 -x -I
 
 
