@@ -1,0 +1,17 @@
+genotypename: autosome.geno
+
+snpname: autosome.snp
+
+indivname: autosome.ind
+
+evecoutname: autosome.pca.evec
+
+evaloutname: autosome.eval
+
+altnormstyle: NO
+
+numoutevec: 20
+
+numoutlieriter: 0
+
+outliersigmathresh: 6.0
