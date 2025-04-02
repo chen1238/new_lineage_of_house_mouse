@@ -1,4 +1,3 @@
-https://zhuanlan.zhihu.com/p/69726572
 conda create -n gatk4
 conda activate gatk4
 conda install -c bioconda gatk4
