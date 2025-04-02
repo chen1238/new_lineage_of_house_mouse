@@ -7,5 +7,6 @@ genmap map -K 30 -E 2 -I ./1.index/ -O result -t -w -bg
 seqkit seq -n /media/rui/4t/Rgrcm38p6/grcm38.fa
 
 awk '/^[0-9]/&&$4==1{print $1"\t"$2"\t"$3}' result.bedgraph > autosome.bed
+
 bcftools view -T autosome.bed ../autosome.recode.vcf -Ov -o autosome-1.recode.vcf
 
