@@ -1,0 +1,19 @@
+// Priors and rules file
+// *********************
+ 
+[PARAMETERS]
+//#isInt? #name   #dist.#min  #max
+//all N are in number of haploid individuals
+1  NCAS1       unif     1e2 1e6   output
+1  NCAS2       unif     1e2 1e6   output
+1  NDOM        unif     1e2 1e6   output
+1  NGR         unif     1e2 1e6   output
+1  NMUS        unif     1e2 1e6   output
+1  TDIV1       unif     1e4 1e6   output
+1  TT1         unif     1e2 1e6   hide
+1  TT2         unif     1e2 1e6   hide
+1  TT3         unif     1e2 1e6   hide
+[COMPLEX PARAMETERS]
+1  TDIV2 =  TDIV1 + TT1  output
+1  TDIV3 =  TDIV2 + TT2  output
+1  TDIV4 =  TDIV3 + TT3  output
