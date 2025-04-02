@@ -7,7 +7,7 @@ for i in {1..100}
    cd run$i
    ../../fsc2705 -t ${PREFIX}.tpl -e ${PREFIX}.est -n 200000 -m -M -L 50 -s0 -c 10
    cd ..
- done../fsc2705 -i 4pop_maxL.par -n 100 -j -m -s0 -x -I
+ done
 
 
 #generate 1,000 bootstrap replicates
