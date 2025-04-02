@@ -8,5 +8,5 @@ seqkit seq -n /media/rui/4t/Rgrcm38p6/grcm38.fa
 
 awk '/^[0-9]/&&$4==1{print $1"\t"$2"\t"$3}' result.bedgraph > autosome.bed
 
-bcftools view -T autosome.bed ../autosome.recode.vcf -Ov -o autosome-1.recode.vcf
+bcftools view -T autosome.bed autosome.pass.snp.vcf -Ov -o autosome.recode.vcf
 
