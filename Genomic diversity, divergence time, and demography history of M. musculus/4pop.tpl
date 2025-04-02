@@ -7,11 +7,11 @@ NDOM
 NGR
 NMUS
 //Samples sizes and samples age
-12
-12
-12
-12
-12
+20
+20
+20
+20
+20
 //Growth rates  : negative growth implies population expansion
 0
 0
