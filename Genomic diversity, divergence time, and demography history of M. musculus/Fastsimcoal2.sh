@@ -1,6 +1,6 @@
 #running fastsimcoal2
-PREFIX=5pop
-for i in {1..50}
+PREFIX=4pop
+for i in {1..100}
  do
    mkdir run$i
    cp ${PREFIX}* ./run$i
