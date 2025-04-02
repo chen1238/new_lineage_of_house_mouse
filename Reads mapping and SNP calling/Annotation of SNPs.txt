@@ -1,6 +1,6 @@
-vcftools --vcf ../../Autosome/Autosome.vcf --keep Other.txt --recode --mac 1 --out Other
+vcftools --vcf ../../autosome/Autosome.vcf --keep Other.txt --recode --mac 1 --out Other
 
-vcftools --vcf ../../Autosome/Autosome.vcf --keep JL.txt --recode --max-missing 0.9 --mac 3 --out JL
+vcftools --vcf ../../autosome/Autosome.vcf --keep JL.txt --recode --max-missing 0.9 --mac 3 --out JL
 
 awk '!/^#/{print $1"\t"$2}' Other.recode.vcf > Other.site
 
