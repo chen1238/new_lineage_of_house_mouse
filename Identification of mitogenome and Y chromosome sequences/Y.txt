@@ -7,7 +7,7 @@ vcftools --vcf Y.vcf \
     --max-alleles 2 \
     --min-alleles 2 \
     --min-meanDP 3 \
-    --minQ 30 \
+    --minQ 20 \
     --max-missing 0.8 \
     --out Y \
     --recode \
@@ -15,4 +15,5 @@ vcftools --vcf Y.vcf \
 
 bcftools view -t Y:1-3400000 Y.recode.vcf -o Y.recode.Yp.vcf
 
+#mappability filter
 bcftools view -T Y.bed Y.recode.Yp.vcf -o Y.recode.Yp.bed.vcf
