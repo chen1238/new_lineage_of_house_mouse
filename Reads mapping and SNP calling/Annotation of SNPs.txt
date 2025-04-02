@@ -6,7 +6,7 @@ awk '!/^#/{print $1"\t"$2}' Other.recode.vcf > Other.site
 
 bcftools view -T ^Other.site JL.recode.vcf -o JL.specific.vcf
 
-vep -i JL.specific.vcf --fork 8 -o autosome.vep.vcf \
+vep -i JL.specific.vcf --fork 8 -o JL.vep.vcf \
     --cache --cache_version 101 --assembly GRCm38 \
     --dir ~/.vep/ --offline --vcf \
     --species mus_musculus \
