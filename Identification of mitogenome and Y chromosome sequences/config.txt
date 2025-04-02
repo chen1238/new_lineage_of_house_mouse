@@ -1,0 +1,38 @@
+Project:
+-----------------------
+Project name          = Test
+Type                  = mito
+Genome Range          = 12000-22000
+K-mer                 = 33
+Max memory            = 
+Extended log          = 0
+Save assembled reads  = no
+Seed Input            = /media/ling/PA-USA-analysis/8.Mit/Mus-mit.fasta
+Extend seed directly  = no
+Reference sequence    = /media/ling/PA-USA-analysis/8.Mit/Mus-mit.fasta
+Variance detection    = 
+Chloroplast sequence  =
+
+Dataset 1:
+-----------------------
+Read Length           = 101
+Insert size           = 200
+Platform              = illumina
+Single/Paired         = PE
+Combined reads        = 
+Forward reads         = /media/ling/PA-USA-analysis/1.raw_data/JL6_good_1.fq.gz
+Reverse reads         = /media/ling/PA-USA-analysis/1.raw_data/JL6_good_2.fq.gz
+Store Hash            =
+
+Heteroplasmy:
+-----------------------
+MAF                   = 
+HP exclude list       = 
+PCR-free              = 
+
+Optional:
+-----------------------
+Insert size auto      = yes
+Use Quality Scores    = no
+Reduce ambigious N's  = 
+Output path           = /media/ling/PA-USA-analysis/8.Mit/JL6/
