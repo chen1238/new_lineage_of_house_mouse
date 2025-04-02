@@ -1,3 +1,6 @@
+java -Xss5m -Xmx256g -jar beagle.28Jun21.220.jar gt=../autosome.recode.vcf out=autosome
+
+
 #XP-EHH
 for i in {1..19}
 do
