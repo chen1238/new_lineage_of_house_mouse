@@ -1,3 +1,10 @@
+#2D fold SFS
+../angsd/angsd -bam DOM.list -doSaf 1 -out DOM -GL 2 -anc /media/rui/4t/Rgrcm38p6/grcm38.fa -minMapQ 20 -minQ 20
+../angsd/angsd -bam MUS.list -doSaf 1 -out MUS -GL 2 -anc /media/rui/4t/Rgrcm38p6/grcm38.fa -minMapQ 20 -minQ 20
+
+../angsd/misc/realSFS DOM.saf.idx MUS.saf.idx -fold 1 > 2D.sfs
+
+
 #running fastsimcoal2
 PREFIX=4pop
 for i in {1..100}
