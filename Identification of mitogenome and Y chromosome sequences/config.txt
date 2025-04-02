@@ -2,7 +2,7 @@ Project:
 -----------------------
 Project name          = Test
 Type                  = mito
-Genome Range          = 12000-22000
+Genome Range          = 12000-20000
 K-mer                 = 33
 Max memory            = 
 Extended log          = 0
