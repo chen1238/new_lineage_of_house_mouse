@@ -1,6 +1,16 @@
-vep -i ../../autosome-1.recode.vcf --fork 8 -o autosome.vep.vcf \
-	--cache --cache_version 101 --assembly GRCm38 \
-	--dir ~/.vep/ --offline --vcf \
-	--species mus_musculus \
-	--fasta ~/.vep/Mus_musculus.GRCm38.dna.primary_assembly.fa \
-	--force_overwrite
+vcftools --vcf ../../Autosome/Autosome.vcf --keep Other.txt --recode --mac 1 --out Other
+
+vcftools --vcf ../../Autosome/Autosome.vcf --keep JL.txt --recode --max-missing 0.9 --mac 3 --out JL
+
+awk '!/^#/{print $1"\t"$2}' Other.recode.vcf > Other.site
+
+bcftools view -T ^Other.site JL.recode.vcf -o JL.specific.vcf
+
+vep -i JL.specific.vcf --fork 8 -o autosome.vep.vcf \
+    --cache --cache_version 101 --assembly GRCm38 \
+    --dir ~/.vep/ --offline --vcf \
+    --species mus_musculus \
+    --fasta ~/.vep/Mus_musculus.GRCm38.dna.primary_assembly.fa \
+    --force_overwrite
+
+vcftools --vcf JL.specific.vcf --SNPdensity 50000 --out JL
