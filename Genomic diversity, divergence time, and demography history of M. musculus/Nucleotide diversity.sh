@@ -1,4 +1,4 @@
-../angsd/angsd -bam GR.list -doSaf 1 -out GR -GL 2 -anc /media/rui/4t/Rgrcm38p6/grcm38.fa
+../angsd/angsd -bam GR.list -doSaf 1 -out GR -GL 2 -anc /media/rui/4t/Rgrcm38p6/grcm38.fa -minMapQ 30 -minQ 20
 
 
 ../angsd/misc/realSFS GR.saf.idx -fold 1 > GR.sfs
