@@ -5,7 +5,7 @@
 ../angsd/misc/realSFS DOM.saf.idx MUS.saf.idx -fold 1 > 2D.sfs
 
 
-#running fastsimcoal2, generate maximum likelihood (ML) parameters, _maxL.pv file and _maxL.par file
+#running fastsimcoal2 (best model), generate maximum likelihood (ML) parameters, _maxL.pv file and _maxL.par file
 PREFIX=4pop
 for i in {1..100}
  do
