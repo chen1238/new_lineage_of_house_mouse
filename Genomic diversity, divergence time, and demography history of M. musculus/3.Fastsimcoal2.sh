@@ -17,7 +17,7 @@ for i in {1..100}
  done
 
 
-#generate 1,000 bootstrap replicates using _maxL.par file
+#generate 1,000 bootstrap replicates (folded SFS) using _maxL.par file
 ../fsc2705 -i ${PREFIX}_maxL.par -n 1000 -j -m -s0 -x -I
 
 
