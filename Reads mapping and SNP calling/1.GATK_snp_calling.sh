@@ -27,10 +27,10 @@ fastp -i ./1.raw_data/${i}_good_1.fq.gz -o ./2.filter/${i}_filter_1.fq.gz \
 -I ./1.raw_data/${i}_good_2.fq.gz -O ./2.filter/${i}_filter_2.fq.gz \
 -w 12 -l 50 -n 6 -z 6 -f 15
 done
-#-q	质量分数阈值，小于20，判定为低质量碱基
-#-l	read长度阈值，小于20，去除read
-#-u	低质量碱基占比阈值，大于30%，去除read
-#-n	read中N的阈值，大于5，去除read
+#-q	质量分数阈值，默认15，判定为低质量碱基
+#-l	read长度阈值，小于50，去除reads
+#-u	低质量碱基占比阈值，默认大于40%，去除read
+#-n	read中N的阈值，大于6，去除read
 #-f	剪切read前多少个碱基，受限于测序技术，一般测序得到的read前15bp不靠谱，GC含量波动大。
 #-w	fastp线程
 
